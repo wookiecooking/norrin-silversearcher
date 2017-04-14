@@ -1,4 +1,5 @@
 # Norrin
+![Norrin](https://git.datarats.com/wookiecooking/norrin-silversearcher/raw/master/norrin.jpg)
 
 > A bash script to find a list of strings in a directory of source code.
 
