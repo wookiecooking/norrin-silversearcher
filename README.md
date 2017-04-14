@@ -1,5 +1,11 @@
 # DrFuzz
-> A bash script to find nasty strings in source code.
+> A bash script to find a list of strings in a directory of source code.
+
+This script is just sugar / wrapper around silver searcher, but enhancements  / functionality is incouraged. 
+## Use Cases
+Imagine you get a new client that happens to be also running a custom WordPress template, along with a server that hasnt been maintained with no recurring backups. The client's site gets hacked and infects it all, having you to hunt down nasty strings in wp-content/themes directory. 
+
+Drfuzz helps by searching directories of source code for user-supplied dictionary text files in parallel, helping you clean up the mess and move on.
 
 ## Requirements
 
@@ -25,3 +31,6 @@ chmod +x drfuzz
 
 * Ubuntu 16.04: No Bugs / Working
 * Ubuntu 14.04: No Bugs / Working
+
+## Roadmap
+TBA
