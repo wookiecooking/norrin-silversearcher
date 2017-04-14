@@ -1,14 +1,14 @@
 #!/bin/bash
 
-DFUZZ_VERISON=0.0.2
+NORRIN_VERISON=0.0.2
 PPDATE=$(date '+%Y_%m_%d')
 
 if [[ -z $1 && -z $2 ]]; then
   echo "
-    drfuzz $DFUZZ_VERISON
+    norrin $NORRIN_VERISON
 
     Missing Arguments:
-    Example: ./drfuzz /path/to/dict.txt /path/to/search
+    Example: ./norrin /path/to/dict.txt /path/to/search
   "
   exit 1
 fi

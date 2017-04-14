@@ -1,4 +1,4 @@
-# DrFuzz
+# Norrin
 
 > A bash script to find a list of strings in a directory of source code.
 
@@ -8,7 +8,7 @@ This script is just sugar / wrapper around silver searcher, but enhancements  / 
 
 Imagine you get a new client that happens to be also running a custom WordPress template, along with a server that hasnt been maintained with no recurring backups. The client's site gets hacked and infects it all, having you to hunt down nasty strings in wp-content/themes directory.
 
-Drfuzz helps by searching directories of source code for user-supplied dictionary text files in parallel, helping you clean up the mess and move on.
+norrin helps by searching directories of source code for user-supplied dictionary text files in parallel, helping you clean up the mess and move on.
 
 ## Requirements
 
@@ -20,9 +20,9 @@ Drfuzz helps by searching directories of source code for user-supplied dictionar
 
 ```bash
 # give the script permisson to run
-chmod +x drfuzz
+chmod +x norrin
 # search by supplying a dictionary and the directory to search
-./drfuzz /path/to/dict.txt /path/to/search
+./norrin /path/to/dict.txt /path/to/search
 # Results will be saved to the current directory.
 ```
 
