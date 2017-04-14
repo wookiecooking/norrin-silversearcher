@@ -2,7 +2,7 @@
 
 > A bash script to find a list of strings in a directory of source code.
 
-This script is just sugar / wrapper around silver searcher, but enhancements  / functionality is incouraged.
+This bash script is sugar / wrapper around [The Silver Searcher](https://github.com/ggreer/the_silver_searcher)
 
 ## Use Cases
 
