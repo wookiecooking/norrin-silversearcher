@@ -1,0 +1,45 @@
+#!/bin/bash
+DFUZZ_VERISON=0.0.1
+
+if [[ -z $1 && -z $2 ]]; then
+  echo "
+    drfuzz $DFUZZ_VERISON
+
+    Missing Arguments:
+    Example: ./drfuzz /path/to/dict.txt /path/to/search
+  "
+  exit 1
+fi
+
+TMP_TXT_FILE=/tmp/$(date '+%Y_%m_%d')_tmp.txt
+RESULTS_TXT_FILE=$(date '+%Y_%m_%d')_results.txt
+CPU_COUNT=$(cat /proc/cpuinfo | grep processor | wc -l)
+MAX_JOBS=$(echo "$CPU_COUNT * $CPU_COUNT * 2" | bc -l)
+FILE_LIST=($(cat $1))
+
+# Loop though the file list, splitting the dictionary
+for ((INDEX=0; INDEX < ${#FILE_LIST[@]}; INDEX=$((${INDEX}+${MAX_JOBS})) ));
+do
+  JOBS_RUNNING=0
+  while ((JOBS_RUNNING < MAX_JOBS))
+  do
+    I=$((${INDEX}+${JOBS_RUNNING}))
+    FILE=${FILE_LIST[${I}]}
+    if [ "$FILE" != "" ];then
+      #ag -C -u -i "$FILE" $(pwd) >> $TMP_TXT_FILE
+      ag -u -l -i "$FILE" $2 >> $TMP_TXT_FILE
+    fi
+    JOBS_RUNNING=$((JOBS_RUNNING+1))
+  done
+  wait
+done
+
+# If we have results, dedupe the file and dump it to a results file
+if [ $(wc -l $TMP_TXT_FILE | cut -f1 -d' ') -gt 1 ]; then
+  cat $TMP_TXT_FILE | uniq > $RESULTS_TXT_FILE
+  RESULT_COUNT=$(wc -l $RESULTS_TXT_FILE | cut -f1 -d' ')
+  echo "$RESULT_COUNT files had matches"
+fi
+
+# always remove the temp file
+rm $TMP_TXT_FILE
