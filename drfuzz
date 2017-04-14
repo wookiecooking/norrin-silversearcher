@@ -1,5 +1,7 @@
 #!/bin/bash
-DFUZZ_VERISON=0.0.1
+
+DFUZZ_VERISON=0.0.2
+PPDATE=$(date '+%Y_%m_%d')
 
 if [[ -z $1 && -z $2 ]]; then
   echo "
@@ -11,20 +13,25 @@ if [[ -z $1 && -z $2 ]]; then
   exit 1
 fi
 
-TMP_TXT_FILE=/tmp/$(date '+%Y_%m_%d')_tmp.txt
-RESULTS_TXT_FILE=$(date '+%Y_%m_%d')_results.txt
+TMP_TXT_FILE=/tmp/$PPDATE_tmp.txt
+RESULTS_TXT_FILE=$PPDATE_results.txt
+
 CPU_COUNT=$(cat /proc/cpuinfo | grep processor | wc -l)
+
+# this is a bit over kill, but it makes it faster
 MAX_JOBS=$(echo "$CPU_COUNT * $CPU_COUNT * 2" | bc -l)
-FILE_LIST=($(cat $1))
+
+# The user passed dictionary
+DICTIONARY_LIST=($(cat $1))
 
 # Loop though the file list, splitting the dictionary
-for ((INDEX=0; INDEX < ${#FILE_LIST[@]}; INDEX=$((${INDEX}+${MAX_JOBS})) ));
+for ((INDEX=0; INDEX < ${#DICTIONARY_LIST[@]}; INDEX=$((${INDEX}+${MAX_JOBS})) ));
 do
   JOBS_RUNNING=0
   while ((JOBS_RUNNING < MAX_JOBS))
   do
     I=$((${INDEX}+${JOBS_RUNNING}))
-    FILE=${FILE_LIST[${I}]}
+    FILE=${DICTIONARY_LIST[${I}]}
     if [ "$FILE" != "" ];then
       #ag -C -u -i "$FILE" $(pwd) >> $TMP_TXT_FILE
       ag -u -l -i "$FILE" $2 >> $TMP_TXT_FILE
