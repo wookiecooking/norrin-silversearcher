@@ -8,7 +8,7 @@ This script is just sugar / wrapper around silver searcher, but enhancements  / 
 
 Imagine you get a new client that happens to be also running a custom WordPress template, along with a server that hasnt been maintained with no recurring backups. The client's site gets hacked and infects it all, having you to hunt down nasty strings in wp-content/themes directory.
 
-norrin helps by searching directories of source code for user-supplied dictionary text files in parallel, helping you clean up the mess and move on.
+Norrin helps by searching directories of source code for user-supplied dictionary text files in parallel, I.E. automated grepping directories.
 
 ## Requirements
 
@@ -29,7 +29,7 @@ chmod +x norrin
 ## Releases
 
 * 0.0.2 - cleaned up and renamed file, moved date to it variable. added comments and cleaned up variable names.
-* 0.0.1 - Inital Release, Proof of concept
+* 0.0.1 - Inital release, proof of concept
 
 ## Testing
 
