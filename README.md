@@ -1,6 +1,5 @@
 # DrFuzz
-
-    A bash script to find nasty strings in source code.
+> A bash script to find nasty strings in source code.
 
 ## Requirements
 
