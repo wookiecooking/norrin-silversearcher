@@ -1,15 +1,8 @@
 # Norrin
-![Norrin](https://git.datarats.com/wookiecooking/norrin-silversearcher/raw/master/assets/norrin.jpg)
 
 > A bash script to find a list of strings in a directory of source code.
 
 This bash script is sugar / wrapper around [The Silver Searcher](https://github.com/ggreer/the_silver_searcher)
-
-## Use Cases
-
-Imagine you get a new client that happens to be also running a custom WordPress template, along with a server that hasnt been maintained with no recurring backups. The client's site gets hacked and infects it all, having you to hunt down nasty strings in wp-content/themes directory.
-
-Norrin helps by searching directories of source code for user-supplied dictionary text files in parallel, I.E. automated grepping directories.
 
 ## Requirements
 
@@ -32,10 +25,12 @@ chmod +x norrin
 * 0.0.2 - cleaned up and renamed file, moved date to it variable. added comments and cleaned up variable names.
 * 0.0.1 - Inital release, proof of concept
 
+## Use Cases
+
+Norrin helps by searching directories of source code for user-supplied dictionary text files in parallel, I.E. automated grepping directories.
+
 ## Testing
 
 * Ubuntu 16.04: No Bugs / Working
 * Ubuntu 14.04: No Bugs / Working
 
-## Roadmap
-TBA
